@@ -3,6 +3,7 @@ package net.ruixin.hk;
 import com.alibaba.fastjson.JSONObject;
 import com.hikvision.artemis.sdk.ArtemisHttpUtil;
 import com.hikvision.artemis.sdk.config.ArtemisConfig;
+import com.hikvision.artemis.sdk.constant.Constants;
 
 
 import java.util.HashMap;
@@ -14,6 +15,8 @@ public class GetCameraPreviewURL {
 
 
     public static String GetCameraPreviewURL() {
+        // 设置超长时间
+        Constants.DEFAULT_TIMEOUT = 10000;
 
         /**
          * STEP1：设置平台参数，根据实际情况,设置host appkey appsecret 三个参数.

@@ -3,6 +3,7 @@ package net.ruixin.hk;
 import com.alibaba.fastjson.JSONObject;
 import com.hikvision.artemis.sdk.ArtemisHttpUtil;
 import com.hikvision.artemis.sdk.config.ArtemisConfig;
+import com.hikvision.artemis.sdk.constant.Constants;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,6 +16,9 @@ import java.util.Map;
 public class HkUtils {
 
     public static String getDataByUrl(String url, Map<String, Object> params) {
+
+        // 设置超长时间
+        Constants.DEFAULT_TIMEOUT = 10000;
         /**
          * STEP1：设置平台参数，根据实际情况,设置host appkey appsecret 三个参数.
          */
@@ -46,7 +50,6 @@ public class HkUtils {
          * STEP5：组装请求参数
          */
         JSONObject jsonBody = new JSONObject();
-        Map<String, String> map = new HashMap<>();
         Iterator<String> it =  params.keySet().iterator();
         while (it.hasNext()) {
             String key = it.next();
