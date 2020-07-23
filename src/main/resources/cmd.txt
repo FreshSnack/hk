@@ -1,0 +1,32 @@
+ffmpeg -i rtsp://101.69.216.133:554/openUrl/Q4h4R56 -fflags flush_packets -max_delay 1 -an -flags -global_header -hls_time 1 -hls_list_size 3 -hls_wrap 3 -vcodec copy -y ./hls/test.m3u8
+
+ffmpeg -f rtsp -rtsp_transport tcp -i "rtsp://101.69.216.133:554/openUrl/8EguTS0" -strict -2 -c:v libx264 -vsync 2 -c:a aac -f hls -hls_time 4 -hls_list_size 5 -hls_wrap 10 ./hls/test.m3u8
+
+ffmpeg -i "rtsp://101.69.216.133:554/openUrl/BxhHGmI" -c copy -f hls -hls_time 2.0 -hls_list_size 1 -hls_wrap 15 ./hls/test.m3u8
+
+
+ffmpeg -i rtsp://101.69.216.133:554/openUrl/n4qy3ni -fflags flush_packets -max_delay 1 -an -flags -global_header -hls_time 1 -hls_list_size 3 -hls_wrap 3 -vcodec copy -y ./hls/test.m3u8
+
+
+
+ffmpeg -i rtsp://101.69.216.133:554/openUrl/2oZEZLq -fflags flush_packets -max_delay 1 -an -flags -global_header -hls_time 1 -hls_list_size 3 -hls_wrap 3 -vcodec copy -y ./hls/test.m3u8
+
+ffmpeg -i "rtsp://101.69.216.133:554/openUrl/JKkZLEY" -c copy -f hls -hls_time 2.0 -hls_list_size 1 -hls_wrap 15 ./hls/test.m3u8
+
+ffmpeg -i "rtsp://101.69.216.133:554/openUrl/JKkZLEY" -vcodec libx264 -vprofile baseline -acodec libmp3lame -ar 44100 -ac 1 -f flv ./hls/test.m3u8
+
+ffmpeg -f rtsp -rtsp_transport tcp -i rtmp://101.69.216.133:1935/live/openUrl/Cg2BsBy -fflags flush_packets -max_delay 1 -an -flags -global_header -hls_time 1 -hls_list_size 1 -hls_flags delete_segments+omit_endlist -vcodec copy -y ./hls/test.m3u8
+
+
+
+ffmpeg -rtsp_transport tcp -i rtsp://101.69.216.133:554/openUrl/Q4h4R56 -codec:v libx264 -map 0 -f hls -hls_list_size 6 -hls_wrap 10 -hls_time 10 ./hls/test.m3u8
+
+ffmpeg -i rtsp://101.69.216.133:554/openUrl/Xvx14as -fflags flush_packets -max_delay 1 -an -flags -global_header -hls_time 1 -hls_list_size 3 -hls_wrap 3 -vcodec copy -y ./hls/test.m3u8
+
+ffmpeg -i rtsp://101.69.216.133:554/openUrl/Xvx14as -fflags flush_packets -max_delay 1 -an -flags -global_header -hls_time 1 -hls_list_size 3 -hls_wrap 3 -vcodec copy -y ./hls/test.m3u8
+
+
+ffmpeg -i rtsp://101.69.216.133:554/openUrl/Xvx14as -fflags flush_packets -max_delay 1 -an -flags -global_header -hls_time 1 -hls_list_size 3 -hls_wrap 3 -vcodec copy -y ./hls/test.m3u8
+
+
+ffmpeg -i rtsp://101.69.216.133:554/openUrl/rMjV7rO -fflags flush_packets -max_delay 1 -an -flags -global_header -hls_time 1 -hls_list_size 3 -hls_wrap 3 -vcodec copy -y ./hls/test.m3u8
