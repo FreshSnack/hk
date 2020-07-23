@@ -1,0 +1,79 @@
+<html>
+<head>
+<link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+<script src="https://unpkg.com/video.js/dist/video.js"></script>
+<script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+</head>
+<body>
+
+<video id="my_video_1" class="video-js vjs-default-skin" preload="auto" width="640" height="268" muted>
+<!--    <source src="http://kbs-dokdo.gscdn.com/dokdo_300/_definst_/dokdo_300.stream/playlist.m3u8" type="application/x-mpegURL">-->
+    <!--<source src="http://101.69.216.133:83/openUrl/i9IVsnC/live.m3u8" type="application/x-mpegURL">-->
+    <source src="http://localhost/hls/test.m3u8" type="application/x-mpegURL">
+ </video>
+
+ </body>
+
+ <script>
+ //js部分 --这部分别忽略了[我自己没写，调的快崩溃]
+//var player=videojs('#my_video_1');
+//player.play();
+
+ var myPlayer = videojs('my_video_1', {
+     bigPlayButton: true,
+     notSupportedMessage: 'error',
+     textTrackDisplay: true,
+     posterImage: true,
+     errorDisplay: true,
+     controlBar: true,
+     autoplay: true
+ }, function () {
+ });
+//视频播放
+/*
+var myPlayer = videojs('hls',{
+    bigPlayButton : true,
+    textTrackDisplay : true,
+    posterImage: true,
+    errorDisplay : true,
+    controlBar : true,
+    autoplay: true
+},function(){
+    //ready 加载
+//                        console.log(this)
+/!*
+	var _that = this;
+    this.on('loadedmetadata',function(){
+    })
+    this.on('ended',function(){
+    })
+    this.on('firstplay',function(){
+    })
+    this.on('loadstart',function(){
+        //开始加载
+    })
+    this.on('loadeddata',function(){
+    })
+    this.on('seeking',function(){
+        //正在去拿视频流的路上
+    })
+    this.on('seeked',function(){
+        //已经拿到视频流,可以播放
+        myPlayer.play(); //视频播放
+    })
+    this.on('waiting',function(){
+    })
+    this.on('pause',function(){
+    })
+    this.on('play',function(){
+    })
+*!/
+
+});
+*/
+
+ </script>
+
+
+
+</html>

@@ -1,4 +1,4 @@
-package net.ruixin.hk;
+package net.ruixin.hk.test;
 
 import com.alibaba.fastjson.JSONObject;
 import com.hikvision.artemis.sdk.ArtemisHttpUtil;

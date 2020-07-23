@@ -11,6 +11,11 @@ repositories {
     mavenCentral()
 }
 
+
+/*configurations {
+    all*.exclude group: 'org.bytedeco', module: 'javacpp-presets'
+}*/
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile 'com.hikvision.ga:artemis-http-client:1.1.2'
@@ -18,5 +23,13 @@ dependencies {
     compile group: 'com.alibaba', name: 'fastjson', version: '1.2.62'
     // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.7'
+    // https://mvnrepository.com/artifact/org.bytedeco/javacv
+/*    compile group: 'org.bytedeco', name: 'javacv', version: '1.5.3'
+// https://mvnrepository.com/artifact/org.bytedeco.javacpp-presets/opencv
+    compile group: 'org.bytedeco.javacpp-presets', name: 'opencv', version: '4.0.1-1.4.4'*/
+    compile 'org.bytedeco:javacv:1.4.3'
+    compile 'org.bytedeco.javacpp-presets:ffmpeg-platform:4.0.2-1.4.3'
+/*    compile group: 'org.bytedeco.javacpp-presets', name: 'opencv', version: '3.1.0-1.2'
+    compile group: 'org.bytedeco.javacpp-presets', name: 'opencv', version: '3.1.0-1.2', classifier:'windows-x86_64'*/
 
 }

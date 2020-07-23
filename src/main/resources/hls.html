@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #HLSPlayer {
+            width: 500px;
+            height: 500px;
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
+
+<div class="video" id="HLSPlayer" ></div>
+
+<!--<video src="http://101.69.216.133:83/openUrl/buVJnB6/live.m3u8" controls></video>-->
+
+
+<script type="text/javascript">
+    //js部分
+    var video = document.getElementById('HLSPlayer');
+    var hls = new Hls();
+    var hlsUrl = 'http://101.69.216.133:83/openUrl/C9qaK2s/live.m3u8';
+    hls.loadSource(hlsUrl);
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED,function(){
+        video.play();
+    });
+</script>
+
+</body>
+</html>

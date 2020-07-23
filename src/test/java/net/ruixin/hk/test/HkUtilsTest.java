@@ -1,10 +1,10 @@
 package net.ruixin.hk.test;
 
-import net.ruixin.hk.HkUtils;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author dingmx
@@ -16,7 +16,20 @@ public class HkUtilsTest {
     public void testPreviewURLs() {
         String url = "/api/video/v1/cameras/previewURLs";
         Map<String, Object> params = new HashMap<>();
-        params.put("cameraIndexCode", "e0544e148f744bbe887142007b013e61");
+        params.put("cameraIndexCode", "3209f4d747e0431cb1a0fb7efe181ee6");
+        //params.put("transmode", "0");
+        params.put("protocol", "rtsp");
+        params.put("expand", "streamform=rtp");
+        String result = HkUtils.getDataByUrl(url, params);
+        System.out.println(result);
+    }
+
+    @Test
+    public void testCameras() {
+        String url = "/api/resource/v1/cameras";
+        Map<String, Object> params = new HashMap<>();
+        params.put("pageNo", 1);
+        params.put("pageSize", 1000);
         String result = HkUtils.getDataByUrl(url, params);
         System.out.println(result);
     }
@@ -44,19 +57,43 @@ public class HkUtilsTest {
         String url = "/api/resource/v1/regions";
         Map<String, Object> params = new HashMap<>();
         params.put("pageNo", 1);
+        params.put("pageSize", 1000);
+        String result = HkUtils.getDataByUrl(url, params);
+        System.out.println(result);
+    }
+
+    @Test
+    public void testRegionCameras() {
+        String url = "/api/resource/v1/regions/regionIndexCode/cameras";
+        Map<String, Object> params = new HashMap<>();
+        params.put("regionIndexCode", "5ed1a431-dd12-4af6-a424-bf58e9591cba");
+        params.put("pageNo", 1);
         params.put("pageSize", 10);
         String result = HkUtils.getDataByUrl(url, params);
         System.out.println(result);
     }
 
     @Test
-    public void testCameras() {
-        String url = "/api/resource/v1/regions/regionIndexCode/cameras";
+    public void testSubRegions() {
+        String url = "/api/resource/v2/regions/subRegions";
+        List<Map> resultList = new ArrayList<>();
         Map<String, Object> params = new HashMap<>();
-        params.put("regionIndexCode", "1703265c-52aa-4637-a8fa-2e368e634f97");
+        params.put("parentIndexCode", "82fbcc99-8390-46f3-b889-d040735717db");
+        params.put("resourceType", "camera");
         params.put("pageNo", 1);
         params.put("pageSize", 10);
         String result = HkUtils.getDataByUrl(url, params);
+        JSONObject jsonObject = JSONObject.parseObject(result);
+        if("0".equals(jsonObject.getString("code"))) {
+            JSONArray jsonArray = jsonObject.getJSONObject("data").getJSONArray("list");
+            /*jsonArray.forEach(it-> {
+                JSONObject jsonObj = (JSONObject) it;
+                Map<String, Object> map = jsonObj.toJavaObject(Map.class);
+                resultList.add(map);
+            });*/
+        } else {
+            System.out.println(jsonObject.getString("msg"));
+        }
         System.out.println(result);
     }
 }
